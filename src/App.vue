@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+   
+    
+     <HelloWorld msg="Burgertin"/>
+     <formulario/>
+     <ComidasCards/>
+
+     
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import formulario from './components/mi-formulario.vue'
+import ComidasCards from "./components/ComidasCards.vue"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    formulario,
+    ComidasCards
+    
   }
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: black;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
