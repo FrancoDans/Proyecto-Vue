@@ -1,40 +1,53 @@
 <template>
-  <div class="login">
-    <h1 class="title">Iniciar sesión:</h1>
-    <form action class="form" @submit.prevent="login">
-      <label class="form-label" for="#email">Email:</label>
-      <input v-model="email" class="form-input" type="email" id="email" required placeholder="Email">
-      <label class="form-label" for="#password">Password:</label>
-      <input v-model="password" class="form-input" type="password" id="password" placeholder="Password">
-      <input class="form-submit" type="submit" value="Login">
-    </form>
-    <hr/>
+  <div class="columns">
+    <div class="column is-6">
+      <form @submit.prevent="login" class="box">
+        <div class="field">
+          <label>Correo</label>
+          <input
+            v-model="email"
+            class="input"
+            required
+            type="email"
+            placeholder="Ingrese su correo"
+          >
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <input
+            v-model="password"
+            class="input"
+            required
+            type="password"
+            placeholder="Ingrese su contraseña"
+          >
+          <p v-if="error" class="help has-text-danger">{{error}}</p>
+        </div>
+        <div class="field">
+          <button class="button is-primary is-rounded is-medium" type="submit">Ingresar</button>
+        </div>
+      </form>
+    </div>
   </div>
-
-
-
-
 </template>
 
 <script>
+
 export default {
-  data: () => ({
-    email: "",
-    password: ""
-  }),
-  methods: {
-      name:"formulario",
-    login() {
-      console.log(this.email);
-      console.log(this.password);
-    }
-  }
+  name: "LoginApp",
+  data() {
+    return {
+      email: "",
+      password: "",
+      error: null
+    };
+  },
+ 
 };
 </script>
 
-<style scoped>
-.login {
-  text-align: start;
-  
+<style>
+.columns{
+    text-align: start;
 }
 </style>

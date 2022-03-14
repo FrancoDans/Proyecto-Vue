@@ -4,7 +4,7 @@
    
     
      <HelloWorld msg="Burgertin"/>
-     <formulario/>
+     <LoginApp/>
      <ComidasCards/>
 
      
@@ -13,13 +13,13 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import formulario from './components/mi-formulario.vue'
+import LoginApp from './components/mi-formulario.vue'
 import ComidasCards from "./components/ComidasCards.vue"
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    formulario,
+    LoginApp,
     ComidasCards
     
   }
