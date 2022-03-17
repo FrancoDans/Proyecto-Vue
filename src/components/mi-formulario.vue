@@ -1,53 +1,65 @@
 <template>
-  <div class="columns">
-    <div class="column is-6">
-      <form @submit.prevent="login" class="box">
-        <div class="field">
-          <label>Correo</label>
-          <input
-            v-model="email"
-            class="input"
-            required
-            type="email"
-            placeholder="Ingrese su correo"
-          >
-        </div>
-        <div class="field">
-          <label>Contraseña</label>
-          <input
-            v-model="password"
-            class="input"
-            required
-            type="password"
-            placeholder="Ingrese su contraseña"
-          >
-          <p v-if="error" class="help has-text-danger">{{error}}</p>
-        </div>
-        <div class="field">
-          <button class="button is-primary is-rounded is-medium" type="submit">Ingresar</button>
-        </div>
-      </form>
-    </div>
+  <div>
+    <h1>Contacto de ayuda</h1>
+    <form name="form" id="form" v-on:submit.prevent="procesar()"></form>
+      <p>
+        Nombre y Apellido: <input type="text" name="nombre" placeholder="Nombre y Apellido" class="form-contol" v-model="contacto.nombre">
+      </p> <div v-if="submited && !$v.contacto.nombre.required">Este campo es obligatorio</div>
+            <div v-if="submited && !$v.contacto.nombre.minLength">Este campo debe tener al menos 3 caracteres</div>        
+      <p>
+        E-mail: <input type="text" name="correo" placeholder="E-mail" class="form-contol" v-model="contacto.correo">
+      </p>
+    <p>
+       Teléfono: <input type="text" name="telefono" placeholder="Teléfono" class="form-contol" v-model="contacto.telefono">
+      </p>
+  
+    <p>
+      Mensaje: <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escriba su mensaje" class="form-control" v-model="contacto.mensaje"></textarea>
+    </p>
+    <hr>
+    <input type="submit" value="Enviar" title="Enviar" class="btn btn-primary">
+    
   </div>
+
 </template>
 
 <script>
-
+  import{
+    required,
+    minLength,
+    email
+  } from "vuelidate/lib/validators";
 export default {
-  name: "LoginApp",
-  data() {
-    return {
-      email: "",
-      password: "",
-      error: null
-    };
-  },
- 
-};
+  name:"ContactoComponent",
+  data(){
+    return{
+      submited:false,
+      contacto: {
+          nombre:"",
+          correo:"",
+          telefono:"",
+          mensaje:""     
+    }
+  }
+},
+validations: {
+  contacto: {
+    nombre:{
+      required,
+      minLength:minLength(3)
+    },
+    correo: {
+      required,
+      minLength: minLength(8),
+      email
+    }
+  }
+}
+}
+
+
 </script>
 
 <style>
-.columns{
-    text-align: start;
-}
+
 </style>
