@@ -1,66 +1,54 @@
 <template>
 
-  <div class="cards">
-      <h1 class="cards-title" >Menú:</h1>
-      
-  <div class="row container-fluid">
-    <div class="col-3">
-       <b-card
-    title="Card Title"
-    img-src="@/assets/logo.png"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </b-card-text>
-
-    <b-button href="#" variant="primary">Go somewhere</b-button>
-  </b-card>
+<div class="card">
+  <ul v-for="producto in productos" :key="producto.imagen" >
+    <img class="imagen-cards" :src="producto.imagen" :alt="producto.name">
+    <div class="container">
+      <h4><b>{{producto.name}}</b></h4>
+      <span><b>Precio:</b>${{producto.precio}}</span>
+      <tr></tr>
+      <button class="btn btn-primary">Agregar al carrito</button>
     </div>
-     <div class="col-3">
-       <b-card
-    title="Card Title"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </b-card-text>
-
-    <b-button href="#" variant="primary">Go somewhere</b-button>
-  </b-card>
-    </div>
- 
+  </ul>
+  
 </div>
 
-</div>
+
 
 </template>
 
 <script>
+import { data } from "./productos/productos"
 export default {
-    name:"ComidasCards"
+    name:"ComidasCards",
+    
+    data(){
+      return{
+        productos:data
+      }
+}
 }
 </script>
 
 <style>
 .cards{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0,3s;
+  border-radius: 5px;
+  width: 350px;
+  margin: 15px;
+  padding-bottom: 15px;
+}
+
+.imagen-cards{
+  border-radius: 5px 5px 0 0;
+  height: 200px;
+  width: 350px;
+  
 
 }
-.cards-title{
-    text-align: start;
-    color: black;
-    
+
+.container {
+  padding: 2px 16px;
 }
 </style>

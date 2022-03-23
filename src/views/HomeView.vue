@@ -1,7 +1,7 @@
 <template>
   <div class="home">
    
-    <HelloWorld msg="BURGERTIN"/>
+    <HelloWorld msg="SAN TONIO PIZZERIA"/>
     <ContactoComponent/>
 
   </div>
